@@ -22,6 +22,7 @@ public interface ProductDao extends JpaRepository<Product,Integer>{
 	 
 	 @Query("From Product where productName=:productName and categoryId =:categoryId")     //Query yazarken veritabanı tablosu olarak değil, entity olarak yazıyoruz.
 	 List<Product> getByNameAndCategory(String productName, int categoryId);
+
 	 // : 'den sonrası parametremizi veriyoruz.
 	 //select * from products where product_name= bisey and categoryId=bisey
 	 
