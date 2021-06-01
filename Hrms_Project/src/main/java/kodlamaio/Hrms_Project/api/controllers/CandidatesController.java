@@ -13,6 +13,7 @@ import kodlamaio.Hrms_Project.entities.concretes.Candidate;
 
 @RestController
 @RequestMapping("/api/candidates")
+
 public class CandidatesController {
 
 	  private CandidateService candidateService;
