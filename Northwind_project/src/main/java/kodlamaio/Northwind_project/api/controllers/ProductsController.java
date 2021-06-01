@@ -18,7 +18,7 @@ import kodlamaio.Northwind_project.entities.concretes.Product;
 @RestController 		         // Controller olduğunu söyledik.	
 @RequestMapping("api/products")  
 public class ProductsController {
-	//dış dünyanın sistemimizle iletişim kurduğu yer : Controller'dır.
+	//dış dünyanın sistemimizle iletişim kurduğu yer : Controller'dır..
 	private ProductService productService;
 	
 	@Autowired
