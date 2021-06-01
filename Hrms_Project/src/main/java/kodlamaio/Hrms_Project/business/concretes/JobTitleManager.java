@@ -5,13 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sun.net.httpserver.Authenticator.Result;
+
 import kodlamaio.Hrms_Project.business.abstracts.JobTitleServices;
+import kodlamaio.Hrms_Project.core.utilities.results.ErrorResult;
+import kodlamaio.Hrms_Project.core.utilities.results.SuccessResult;
 import kodlamaio.Hrms_Project.entities.concretes.JobTitle;
 import kodlamaio.Hrms_Project.dataAccess.abstracts.JobTitleDao;
 
 @Service
 public class JobTitleManager  implements JobTitleServices{
 
+	
 	private JobTitleDao jobTitleDao;
 	
 	@Autowired
@@ -24,5 +29,6 @@ public class JobTitleManager  implements JobTitleServices{
 		// TODO Auto-generated method stub
 		return this.jobTitleDao.findAll();
 	}
-
+	
+	
 }
