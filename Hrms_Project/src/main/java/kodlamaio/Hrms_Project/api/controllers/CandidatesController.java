@@ -24,7 +24,7 @@ public class CandidatesController {
 		   super();
 	        this.candidateService = candidateService;
 	    }
-	   //deneme2
+	   //deneme22
 	   
 		@GetMapping("/getall")
 		public DataResult<List<Candidate>> getAll(){
