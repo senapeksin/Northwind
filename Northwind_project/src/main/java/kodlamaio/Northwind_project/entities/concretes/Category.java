@@ -27,5 +27,5 @@ public class Category {
 	
 	@OneToMany(mappedBy="categories")
 	private List<Product> products;
-	//deneme
+	
 }
