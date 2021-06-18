@@ -24,6 +24,7 @@ public interface ProductDao extends JpaRepository<Product,Integer>{
 	 List<Product> getByNameAndCategory(String productName, int categoryId);
 
 	 // : 'den sonrası parametremizi veriyoruz.
+	 
 	 //select * from products where product_name= bisey and categoryId=bisey
 	 
 	 
