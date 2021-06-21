@@ -3,6 +3,9 @@ package kodlamaio.Northwind_project.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.Northwind_project.business.abstracts.ProductService;
@@ -52,19 +55,19 @@ public class ProductManager implements ProductService{
 	@Override
 	public DataResult<Product> getByProductNameAndCategoryId(String productName, int categoryId) {
 		//business code
-		return new SuccessDataResult<Product>(this.productDao.getByProductNameAndCategoryId(productName, categoryId),"Data listelendi.");
+		return new SuccessDataResult<Product>(this.productDao.getByProductNameAndCategory_CategoryId(productName, categoryId),"Data listelendi.");
 	}
 
 
 	@Override
 	public DataResult<List<Product>> getByProductNameOrCategoryId(String productName, int categoryId) {
-		return new SuccessDataResult<List<Product>>(this.productDao.getByProductNameOrCategoryId(productName, categoryId),"Data listelendi.");
+		return new SuccessDataResult<List<Product>>(this.productDao.getByProductNameOrCategory_CategoryId(productName, categoryId),"Data listelendi.");
 	}
 
 
 	@Override
 	public DataResult<List<Product>> getByCategoryIdIn(List<Integer> categories) {
-		return new SuccessDataResult<List<Product>>(this.productDao.getByCategoryIdIn(categories),"Data listelendi.");
+		return new SuccessDataResult<List<Product>>(this.productDao.getByCategory_CategoryIdIn(categories),"Data listelendi.");
 	}
 
 
@@ -85,5 +88,25 @@ public class ProductManager implements ProductService{
 		return new SuccessDataResult<List<Product>>(this.productDao.getByNameAndCategory(productName, categoryId),"Data listelendi.");
 	}
 
+
+	@Override
+	public DataResult<List<Product>> getAll(int pageNo, int pageSize) {
+	
+		Pageable pageable = PageRequest.of(pageNo-1, pageSize);
+		
+		return new SuccessDataResult<List<Product>>(this.productDao.findAll(pageable).getContent());
+	}
+
+
+	@Override
+	public DataResult<List<Product>> getAllSorted() {
+		Sort sort = Sort.by(Sort.Direction.ASC,"productName"); //productName vermemizin sebebi : neyi sıralayacağımızı söylüyoruz.
+		return new SuccessDataResult<List<Product>>(this.productDao.findAll(sort),"Sıralama Başarılı");
+		
+	} 
+
+	
+	
+	
 }
 
