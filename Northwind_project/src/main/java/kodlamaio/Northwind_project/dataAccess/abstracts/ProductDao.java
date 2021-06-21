@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import kodlamaio.Northwind_project.entities.concretes.Product;
+import kodlamaio.Northwind_project.entities.dtos.ProductWithCategoryDto;
 
 public interface ProductDao extends JpaRepository<Product,Integer>{
 	 Product getByProductName(String productName);
@@ -28,4 +29,31 @@ public interface ProductDao extends JpaRepository<Product,Integer>{
 	 //select * from products where product_name= bisey and categoryId=bisey
 	 
 	 
+	
+	 
+	 /* DTO KODLARI
+	  * DATA TRANSFER OBJECT (DTO)
+	  * Veri tablosundan veriyi aldınız ve ilgili modelle maplediniz. 
+	  * İlgili modelin veri tablosundan aldığı bilgiyle maplenebilmesi için veri tablosu kolonlarıyla, modelin propertyleri isim ve tip olarak eşleşmeli.
+	  * 
+	  * İşte veri tabanından mapplenen modelleri uygulama içerisinde kullanacağınız modelle aktardığınızda bu modeller dto olarak adlandırılır.
+	  * 
+	  * Sql ' de Join Yapmak
+	  * select p.productId,p.productName , c.categoryName  from Category c inner join Product p  
+	  * on c.CategoryId = p.categoryId
+	  */
+	 
+	 
+	 //Tüm alanları değil de sadece bazı alanları getirmek istediğimiz için From değil, Select diyeceğiz.
+	 //on koşuluna yazmamıza gerek yok . Çünkü Product ve Category entities lerinde join columnlarının ne olduğunu belirtmiştik.
+	 
+	 
+	 //Entity'den istediğim alanları yani  Product ve Catogory tablolarının join'i sonucunda oluşacak kod
+	 
+	 @Query("Select new kodlamaio.Northwind_project.entities.dtos.ProductWithCategoryDto(p.id,p.productName, c.categoryName) From Category c Inner Join c.products p")
+	 List<ProductWithCategoryDto> getProductWithCategoryDetails();
+	 
+	 
+	 
+	
 }

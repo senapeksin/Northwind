@@ -15,6 +15,7 @@ import kodlamaio.Northwind_project.core.utilities.results.SuccessDataResult;
 import kodlamaio.Northwind_project.core.utilities.results.SuccessResult;
 import kodlamaio.Northwind_project.dataAccess.abstracts.ProductDao;
 import kodlamaio.Northwind_project.entities.concretes.Product;
+import kodlamaio.Northwind_project.entities.dtos.ProductWithCategoryDto;
 
 
 
@@ -103,6 +104,13 @@ public class ProductManager implements ProductService{
 		Sort sort = Sort.by(Sort.Direction.ASC,"productName"); //productName vermemizin sebebi : neyi sıralayacağımızı söylüyoruz.
 		return new SuccessDataResult<List<Product>>(this.productDao.findAll(sort),"Sıralama Başarılı");
 		
+	}
+
+
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		
+		return new SuccessDataResult<List<ProductWithCategoryDto>>(this.productDao.getProductWithCategoryDetails(),"Data Listelendi."); 
 	} 
 
 	

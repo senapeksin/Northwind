@@ -14,10 +14,11 @@ import kodlamaio.Northwind_project.business.abstracts.ProductService;
 import kodlamaio.Northwind_project.core.utilities.results.DataResult;
 import kodlamaio.Northwind_project.core.utilities.results.Result;
 import kodlamaio.Northwind_project.entities.concretes.Product;
+import kodlamaio.Northwind_project.entities.dtos.ProductWithCategoryDto;
 
 
 @RestController 		         // Controller olduğunu söyledik.	
-@RequestMapping("api/products")  
+@RequestMapping("/api/products")  
 public class ProductsController {
 	//dış dünyanın sistemimizle iletişim kurduğu yer : Controller'dır..
 	private ProductService productService;
@@ -81,6 +82,14 @@ public class ProductsController {
 	{
 		 return this.productService.getAllSorted();
 	}
+	
+	
+	@GetMapping("/getProductWithCategoryDetails")
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails(){
+		return this.productService.getProductWithCategoryDetails();
+	}
+	
+	
 }
 
 
