@@ -1,6 +1,7 @@
 package kodlamaio.Northwind_project.business.concretes;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kodlamaio.Northwind_project.business.abstracts.UserService;
 import kodlamaio.Northwind_project.core.dataAccess.UserDao;
@@ -10,6 +11,7 @@ import kodlamaio.Northwind_project.core.utilities.results.Result;
 import kodlamaio.Northwind_project.core.utilities.results.SuccessDataResult;
 import kodlamaio.Northwind_project.core.utilities.results.SuccessResult;
 
+@Service
 public class UserManager implements UserService {
 
 	private UserDao userDao;  //UserDao türündeki userDaou'yu enjekte ediyor olacağım.
